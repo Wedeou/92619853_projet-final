@@ -1,6 +1,6 @@
 // controllers/menuController.js
 // Fonctions pour gérer les menus
-const Menu = require('../models/menuModel');
+const Menu = require('../models/menus');
 
 // Fonction pour créer un nouveau menu
 const createMenu = async (req, res) => {

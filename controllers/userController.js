@@ -1,6 +1,6 @@
 // controllers/userController.js
 // Controller for user-related operations
-const User = require('../models/User');
+const User = require('../models/users');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { generateToken } = require('../utility/security');
@@ -60,8 +60,8 @@ const login = async (req, res) => {
     }
 };
 
-/*/ Fonction pour obtenir tous les utilisateurs
-exports.getAllUsers = async (req, res) => {
+//Function to get all users
+const getAllUsers = async (req, res) => {
     try {
         const users = await User.find();
         res.status(200).json(users);
@@ -70,33 +70,33 @@ exports.getAllUsers = async (req, res) => {
     }
 };
 
-// Fonction pour obtenir un utilisateur par ID
-exports.getUserById = async (req, res) => {
+// Function to get a user by ID
+const getUserById = async (req, res) => {
     try {
         const user = await User.findById(req.params.id);
-        if (!user) return res.status(404).json({ message: 'Utilisateur non trouvé' });
+        if (!user) return res.status(404).json({ message: 'User not found' });
         res.status(200).json(user);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
 
-// Fonction pour mettre à jour un utilisateur
-exports.updateUser = async (req, res) => {
+// Function to update a user
+const updateUser = async (req, res) => {
     try {
         const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        if (!user) return res.status(404).json({ message: 'Utilisateur non trouvé' });
+        if (!user) return res.status(404).json({ message: 'User not found' });
         res.status(200).json(user);
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
 };
 
-// Fonction pour supprimer un utilisateur
-exports.deleteUser = async (req, res) => {
+// Function to delete a user
+const deleteUser = async (req, res) => {
     try {
         const user = await User.findByIdAndDelete(req.params.id);
-        if (!user) return res.status(404).json({ message: 'Utilisateur non trouvé' });
+        if (!user) return res.status(404).json({ message: 'User not found' });
         res.status(204).send();
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -105,9 +105,10 @@ exports.deleteUser = async (req, res) => {
 
 // Exporter les fonctions pour les utiliser dans les routes
 module.exports = {
-    createUser,
+    register,
+    login,
     getAllUsers,
     getUserById,
     updateUser,
     deleteUser
-};*/
+};

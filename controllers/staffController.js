@@ -1,6 +1,6 @@
 // controllers/staffController.js
 // Fonctions pour gérer le staff
-const Staff = require('../models/staffModel');
+const Staff = require('../models/staff');
 
 // Fonction pour créer un nouveau membre du staff
 const createStaff = async (req, res) => {

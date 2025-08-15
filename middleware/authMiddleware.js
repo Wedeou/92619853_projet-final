@@ -1,7 +1,7 @@
 // middleware/authMiddleware.js
 // Middleware to verify JWT token
 const jwt = require('jsonwebtoken');
-const user = require('../models/user');
+const user = require('../models/users');
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -18,11 +18,11 @@ const authMiddleware = async (req, res, next) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
      // Find the user by ID from the decoded token
-    const user = await user.findById(decoded.id).select('-password -__v');
+    const user = await user.findById(decoded.id).select('-password');
     if (!user) {
         return res.status(404).json({ message: 'User not found' });
     }
-    
+
     // Attach the user to the request object
     req.user = user;
     next();

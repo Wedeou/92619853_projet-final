@@ -22,7 +22,8 @@ const userSchema = new mongoose.Schema({
     required: true,
     minlength: [6, 'Password must be at least 6 characters long'],
     maxlength: [200, 'Password must be less than 200 characters long'],
-    match: [/^[a-zA-Z0-9]{6,10}$/, 'Password must contain only letters and numbers'],
+    // On supprime la regex car le hash contient des caractères spéciaux
+    // match: [/^[a-zA-Z0-9]{6,10}$/, 'Password must contain only letters and numbers'],
   },
   role: {
     type: String,
@@ -31,14 +32,14 @@ const userSchema = new mongoose.Schema({
     default: 'client',
   },
   refreshToken: {
-        type: String,
-    },
-    isActive: {
-        type: Boolean,
-        default: false,
-    },
+    type: String,
+  },
+  isActive: {
+    type: Boolean,
+    default: true,
+  },
 
-},{timestamps: true });
+}, {timestamps: true});
 
 // Declare methods
 userSchema.methods.setActive = function() {
@@ -52,4 +53,3 @@ userSchema.methods.getActive = function() {
 
 // Exporting the User model
 module.exports = mongoose.model('User', userSchema, '92619853_users');
-
