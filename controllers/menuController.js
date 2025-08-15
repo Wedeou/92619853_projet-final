@@ -59,10 +59,21 @@ const getMenuById = async (req, res) => {
     }
 };
 
+//insert multiple menus
+const insertBulkMenus = async (req, res) => {
+    try {
+        const menus = await Menu.insertMany(req.body);
+        res.status(201).json(menus);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+};
+
 module.exports = {
     create,
     updateMenu,
     deleteMenu,
     getAllMenus,
-    getMenuById
+    getMenuById,
+    insertBulkMenus
 };

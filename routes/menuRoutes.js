@@ -32,10 +32,24 @@ router.delete(
 
 // all menus
 router.get(
-    '/',
+    '/all',
     authMiddleware,
     roleMiddleware('menu', 'view'),
     menuController.getAllMenus
+);
+// menu by ID
+router.get(
+    '/:id',
+    authMiddleware,
+    roleMiddleware('menu', 'view'),
+    menuController.getMenuById
+);
+//multiple menus
+router.post(
+    '/bulk',
+    authMiddleware,
+    roleMiddleware('menu', 'add'),
+    menuController.insertBulkMenus
 );
 
 module.exports = router;
