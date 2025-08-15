@@ -20,6 +20,7 @@ module.exports = {
     },
     order: {
         create: ['serveur', 'admin'],    // Créer une commande
+        listAll: ['serveur', 'admin'],   // Lister toutes les commandes
         view: ['client', 'serveur', 'admin'] ,// Voir une commande
         update: ['serveur', 'admin'], // Mettre à jour une commande
         delete: ['admin']               // Supprimer une commande

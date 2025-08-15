@@ -1,6 +1,8 @@
-// routes/staffRoutes.js
+/*/ routes/staffRoutes.js
 const express = require('express');
 const router = express.Router();
+const authMiddleware = require('../middleware/authMiddleware');
+const roleMiddleware = require('../middleware/roleMiddleware');
 
 // Importer les contrôleurs nécessaires
 const staffController = require('../controllers/staffController');
@@ -15,7 +17,7 @@ router.post('/staff',
     staffController.createStaff
 );
 
-/*/ Route pour obtenir le planning du staff
+// Route pour obtenir le planning du staff
 router.get('/staff/planning',
     authMiddleware,
     roleMiddleware('staff','viewPlanning'),
