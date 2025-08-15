@@ -7,7 +7,8 @@ module.exports = {
         add: ['traiteur', 'admin'],      // Ajouter un menu
         update: ['traiteur', 'admin'],   // Modifier un menu
         delete: ['admin'],               // Supprimer un menu
-        view: ['client', 'serveur', 'traiteur', 'admin'] // Voir les menus
+        view: ['client', 'serveur', 'traiteur', 'admin'], // Voir un menu
+        listAll: ['client', 'serveur', 'traiteur', 'admin'] // Lister tous les menus
     },
     event: {
         create: ['client', 'admin'],     // Créer un événement

@@ -1,10 +1,12 @@
-/*
+
 const express = require('express');
 const router = express.Router();
 const authMiddleware = require('../middleware/authMiddleware');
 const roleMiddleware = require('../middleware/roleMiddleware');
+const menuController = require('../controllers/menuController');
+const permissions = require('../middleware/permission');
 
-// Ajouter un menu
+// add menu
 router.post(
     '/create',
     authMiddleware,
@@ -12,7 +14,7 @@ router.post(
     menuController.create
 );
 
-// Mettre à jour un menu
+// update menu
 router.put(
     '/:id',
     authMiddleware,
@@ -20,7 +22,7 @@ router.put(
     menuController.updateMenu
 );
 
-// Supprimer un menu
+// delete menu
 router.delete(
     '/:id',
     authMiddleware,
@@ -28,7 +30,7 @@ router.delete(
     menuController.deleteMenu
 );
 
-// Voir les menus
+// all menus
 router.get(
     '/',
     authMiddleware,
@@ -37,4 +39,3 @@ router.get(
 );
 
 module.exports = router;
-*/
