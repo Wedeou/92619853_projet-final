@@ -1,5 +1,6 @@
 // middleware/authMiddleware.js
 // Middleware to verify JWT token
+const User = require('../models/users'); // Adjust the path as necessary
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 dotenv.config();
@@ -21,15 +22,15 @@ const authMiddleware = async (req, res, next) => {
     console.log("Decoded token:", decoded);
 
      // Find the user by ID from the decoded token
-    const user = await user.findById(decoded.id).select('-password');
-    console.log("User found:", user);
-    if (!user) {
+    const foundUser = await User.findById(decoded.id).select('-password');
+    console.log("User found:", User);
+    if (!foundUser) {
         console.warn("User not found for the provided token");
         return res.status(404).json({ message: 'User not found' });
     }
 
     // Attach the user to the request object
-    req.user = user;
+    req.user = foundUser;
     next();
     } catch (error) {
         console.error("Error verifying token:", error);

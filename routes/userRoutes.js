@@ -21,14 +21,14 @@ router.post('/login', userController.login);
 // Route pour obtenir la liste des utilisateurs (admin uniquement)
 router.get(
     '/users',
-   // authMiddleware,
-   // roleMiddleware('user', 'manage'),
+    authMiddleware,
+    roleMiddleware('user', 'manage'),
     userController.getAllUsers
 );
 
 // Route pour obtenir les détails d'un utilisateur spécifique (admin uniquement)
 router.get(
-    '/users/:id',
+    '/:id',
     authMiddleware,
     roleMiddleware('user', 'manage'),
     userController.getUserById
@@ -36,7 +36,7 @@ router.get(
 
 // Route pour mettre à jour un utilisateur (admin uniquement)
 router.put(
-    '/users/:id',
+    '/:id',
     authMiddleware,
     roleMiddleware('user', 'manage'),
     userController.updateUser
@@ -44,7 +44,7 @@ router.put(
 
 // Route pour supprimer un utilisateur (admin uniquement)
 router.delete(
-    '/users/:id',
+    '/:id',
     authMiddleware,
     roleMiddleware('user', 'manage'),
     userController.deleteUser

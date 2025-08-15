@@ -13,11 +13,16 @@ module.exports = {
         create: ['client', 'admin'],     // Créer un événement
         approve: ['traiteur', 'admin'],  // Valider un événement
         listAll: ['serveur', 'traiteur', 'admin'], // Lister tous les événements
-        listMine: ['client', 'admin']    // Lister ses propres événements
+        listMine: ['client', 'admin'] ,   // Lister ses propres événements
+        update: ['traiteur', 'admin'], // Mettre à jour un événement
+        delete: ['traiteur', 'admin'], // Supprimer un événement
+        view: ['client', 'serveur', 'traiteur', 'admin'] // Voir les détails d'un événement
     },
     order: {
         create: ['serveur', 'admin'],    // Créer une commande
-        view: ['client', 'serveur', 'admin'] // Voir une commande
+        view: ['client', 'serveur', 'admin'] ,// Voir une commande
+        update: ['serveur', 'admin'], // Mettre à jour une commande
+        delete: ['admin']               // Supprimer une commande
     },
     staff: {
         assign: ['traiteur', 'admin'],   // Assigner un staff à un événement

@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
     required: true,
     minlength: [6, 'Password must be at least 6 characters long'],
     maxlength: [200, 'Password must be less than 200 characters long'],
-    // On supprime la regex car le hash contient des caractères spéciaux
+    match: [/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&]).{6,}$/, 'Password must contain at least one letter, one number, and one special character']
     // match: [/^[a-zA-Z0-9]{6,10}$/, 'Password must contain only letters and numbers'],
   },
   role: {
