@@ -21,7 +21,10 @@ const register = async (req, res) => {
         // Save the user to the database
         await user.save();
         user.isActive = true; // Set user as active upon registration
-        res.status(201).json({ message: 'User registered successfully' });
+        res.status(201).json({
+            message: 'User registered successfully',
+            user });
+
     } catch (error) {
         return res.status(500).json({ message: 'User registration failed' ,error});
     }
