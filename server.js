@@ -21,7 +21,10 @@ const menuRoutes = require('./routes/menuRoutes');
 const eventRoutes = require('./routes/eventRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 const staffRoutes = require('./routes/staffRoutes');
+const swaaggerSetup = require('./config/swagger');
+const swagger = require('./config/swagger');
 
+swaggerSetup(app);
 // Connect to MongoDB
 connectDB();
 
