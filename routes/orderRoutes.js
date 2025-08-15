@@ -1,56 +1,53 @@
-/*const express = require('express');
+const express = require('express');
 const router = express.Router();
 const authMiddleware = require('../middleware/authMiddleware');
 const roleMiddleware = require('../middleware/roleMiddleware');
+const orderController = require('../controllers/orderController');
 
-// Créer une commande
+// create a new order
 router.post(
-    '/',
+    '/create',
     authMiddleware,
     roleMiddleware('order', 'create'),
-    (req, res) => {
-        res.json({ message: 'Commande créée (à implémenter)' });
-    }
+    orderController.create
 );
 
-// Voir les commandes
+// list all orders
 router.get(
-    '/',
+    '/all',
     authMiddleware,
     roleMiddleware('order', 'view'),
-    (req, res) => {
-        res.json({ message: 'Liste des commandes (à implémenter)' });
-    }
+    orderController.getAllOrders
 );
-// Mettre à jour une commande
+// update an order
 router.put(
     '/:id',
     authMiddleware,
     roleMiddleware('order', 'update'),
-    (req, res) => {
-        res.json({ message: `Commande ${req.params.id} mise à jour (à implémenter)` });
-    }
+   orderController.updateOrder
 );
 
-// Supprimer une commande
+// delete an order
 router.delete(
     '/:id',
     authMiddleware,
     roleMiddleware('order', 'delete'),
-    (req, res) => {
-        res.json({ message: `Commande ${req.params.id} supprimée (à implémenter)` });
-    }
+    orderController.deleteOrder
 );
 
-// Obtenir les détails d'une commande
+// get order by ID
 router.get(
     '/:id',
     authMiddleware,
     roleMiddleware('order', 'view'),
-    (req, res) => {
-        res.json({ message: `Détails de la commande ${req.params.id} (à implémenter)` });
-    }
+    orderController.getOrderById
+);
+// insert multiple orders
+router.post(
+    '/bulk',
+    authMiddleware,
+    roleMiddleware('order', 'create'),
+    orderController.insertBulkOrders
 );
 
 module.exports = router;
-*/

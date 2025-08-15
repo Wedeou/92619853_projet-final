@@ -1,6 +1,6 @@
 // controllers/orderController.js
 // Fonctions to manage orders
-const Order = require('../models/orderModel');
+const Order = require('../models/orders');
 
 // Function to crate a new order
 const create = async (req, res) => {
