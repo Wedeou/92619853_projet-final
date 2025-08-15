@@ -1,6 +1,6 @@
 // controllers/eventController.js
 // Fonctions pour gérer les événements
-const Event = require('../models/eventModel');
+const Event = require('../models/events');
 
 // Fonction pour créer un nouvel événement
 const create = async (req, res) => {

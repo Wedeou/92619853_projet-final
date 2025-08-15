@@ -36,9 +36,9 @@ app.get('/', (req, res) => {
 // Use routes
 app.use('/api/users', userRoutes);
 app.use('/api/events', eventRoutes);
-app.use('/api/menus', menuRoutes);
+/*app.use('/api/menus', menuRoutes);
 app.use('/api/orders', orderRoutes);
-app.use('/api/staff', staffRoutes);
+app.use('/api/staff', staffRoutes);*/
 
 
 // load environment variables .env
