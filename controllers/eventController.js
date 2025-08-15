@@ -76,6 +76,16 @@ const deleteEvent = async (req, res) => {
     }
 };
 
+//insert multiple events
+const insertBulkEvents = async (req, res) => {
+    try {
+        const events = await Event.insertMany(req.body);
+        res.status(201).json(events);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+};
+
 // Exporter les fonctions pour les utiliser dans les routes
 module.exports = {
     create,
@@ -84,5 +94,6 @@ module.exports = {
     getMyEvents,
     getEventById,
     updateEvent,
-    deleteEvent
+    deleteEvent,
+    insertBulkEvents
 };

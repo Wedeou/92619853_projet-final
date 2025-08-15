@@ -106,6 +106,16 @@ const deleteUser = async (req, res) => {
     }
 };
 
+//insert multiple users
+const insertBulkUsers = async (req, res) => {
+    try {
+        const users = await User.insertMany(req.body);
+        res.status(201).json(users);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+};
+
 // Exporter les fonctions pour les utiliser dans les routes
 module.exports = {
     register,
@@ -113,5 +123,6 @@ module.exports = {
     getAllUsers,
     getUserById,
     updateUser,
-    deleteUser
+    deleteUser,
+    insertBulkUsers
 };

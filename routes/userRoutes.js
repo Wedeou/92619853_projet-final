@@ -50,4 +50,11 @@ router.delete(
     userController.deleteUser
 );
 
+// Route pour insérer plusieurs utilisateurs (admin uniquement)
+router.post(
+    '/bulk',
+    authMiddleware,
+    roleMiddleware('user', 'manage'),
+    userController.insertBulkUsers
+);
 module.exports = router;

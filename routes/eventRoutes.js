@@ -60,5 +60,12 @@ router.delete(
     eventController.deleteEvent
 );
 
+//multiple events
+router.post(
+    '/bulk',
+    authMiddleware,
+    roleMiddleware('event', 'create'),
+    eventController.insertBulkEvents
+);
 // Exporter le routeur
 module.exports = router;
