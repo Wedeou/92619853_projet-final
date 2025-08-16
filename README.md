@@ -1,5 +1,4 @@
-# Projet Gestion Événements & Restauration
-
+# Projet Gestion DE SERVICE TRAITEUR
 ## Description
 Ce projet est une application backend Node.js pour la gestion des événements, menus, commandes, utilisateurs et personnel. Il inclut :
 - Authentification et autorisation (JWT, rôles).
